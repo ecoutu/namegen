@@ -8,10 +8,10 @@ app.listen(3000);
 var wordList = fs.readFileSync("words").toString().split("\n");
 var wordListLength = wordList.length;
 
-app.get("/", function(request, response) {
+app.get("/bandname", function(request, response) {
     var num = 1;
     var words = 2;
-    var bandName = "";
+    var bandNames = "";
 
     if ("words" in request["query"]) {
         words = parseInt(request["query"]["words"]);
@@ -21,9 +21,12 @@ app.get("/", function(request, response) {
         num = parseInt(request["query"]["num"]);
     }
 
-    for (var i = 0; i < words; i++) {
-        bandName += " " + wordList[Math.floor(Math.random() * wordListLength)];
+    for (var i = 0; i < num; i++) {
+        for (var j = 0; j < words; j++) {
+            bandNames += " " + wordList[Math.floor(Math.random() * wordListLength)];
+        }
+        bandNames += "<br />";
     }
 
-    response.send(bandName);
+    response.send(bandNames);
 });
