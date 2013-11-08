@@ -3,7 +3,7 @@ var fs = require("fs");
 
 var app = express();
 
-app.listen(3000);
+app.listen(80);
 
 var wordList = fs.readFileSync("words").toString().split("\n");
 var wordListLength = wordList.length;
