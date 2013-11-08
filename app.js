@@ -28,5 +28,7 @@ app.get("/bandname", function(request, response) {
         bandNames += "<br />";
     }
 
+    html = "<html><body>" + bandNames + "</body></html>"
+
     response.send(bandNames);
 });
