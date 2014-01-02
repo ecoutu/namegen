@@ -16,7 +16,7 @@ console.log("Using port " + port);
 app.use(express.logger("dev"));
 app.listen(port);
 
-app.get("/bandname", function(request, response) {
+app.get("/namegen", function(request, response) {
     var num = parseInt(request["query"]["num"]) || 1;
     var words = parseInt(request["query"]["words"]) || 2;
     var bandNames = "";
