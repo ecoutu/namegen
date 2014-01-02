@@ -31,11 +31,12 @@ if (argv.help) {
     process.exit(code=0);
 }
 
-console.log("Default words / name: " + argv.count);
-console.log("Using word file: " + argv.file);
-console.log("Default number of names: " + argv.numnames);
-console.log("Using port: " + argv.port);
-console.log("Using route: " + argv.route);
+console.log("Default words / name:   \t" + argv.count);
+console.log("Using word file:        \t" + argv.file);
+console.log("Default number of names:\t" + argv.numnames);
+console.log("Using port:             \t" + argv.port);
+console.log("Using route:            \t" + argv.route);
+console.log("\n");
 
 // Load the wordlist
 var wordList = fs.readFileSync(argv.file).toString().split("\n");
