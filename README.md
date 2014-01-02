@@ -14,7 +14,8 @@ If you're are looking for a name for your new band, look no further!
       -f, --file      Path to the wordlist file            [default: "words"]
       -n, --numnames  Default number of names to generate  [default: 1]
       -p, --port      Port to listen on                    [default: 8080]
-      -r, --route     Route for the name generator         [default: "/namegen"]
+      -r, --route     HTTP route for the name generator    [default: "/namegen"]
+
 
 ## Query parameters
 
