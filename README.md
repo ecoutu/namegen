@@ -1,7 +1,7 @@
 Name Generator
 ==============
 
-This simple Express app selects a random series of words from a word list (about 99 000 words), often resulting in very suitable names!
+I was working doing some testing that required generating short strings of random English words. When I discovered the Linux word list, the random results amused me to ned end, so: this simple Express app selects a random series of words from a word list (about 99 000 words), often resulting in very intersting and amusing names!
 
 ## Usage
 
