@@ -21,6 +21,10 @@ app.get("/namegen", function(request, response) {
     var words = parseInt(request["query"]["words"]) || 2;
     var bandNames = "";
 
+    if (num * words > config.maxWords) {
+        response.send(403, "You requested " + num * words + ", maximum allowed is " + config.maxWords);
+    }
+
     for (var i = 0; i < num; i++) {
         var name = "";
         for (var j = 0; j < words; j++) {

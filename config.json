@@ -1,8 +1,10 @@
 {
   "dev": {
+    "maxWords": 10000,
     "port": 8080
   },
   "prod": {
+    "maxWords": 1000,
     "port": 80
   }
 }
