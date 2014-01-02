@@ -1,34 +1,34 @@
 var config = require("./config.json")[process.env.ENV]
-    , express = require("express")
-    , fs = require("fs")
-    , optimist = require("optimist")
-    ;
+  , express = require("express")
+  , fs = require("fs")
+  , optimist = require("optimist")
+  ;
 
 var defaultPort = process.env.PORT || config.port || 7677;
 
 // Command line arguments
 argv =  optimist.usage("Random name generator")
-    .default("c", config.defaultCount)
-        .alias("c", "count")
-        .describe("c", "Number of words / name")
-    .default("f", "words")
-        .alias("f", "file")
-        .describe("f", "Path to the wordlist file")
-    .default("n", config.defaultNum)
-        .alias("n", "numnames")
-        .describe("n", "Default number of names to generate")
-    .default("p", defaultPort)
-        .alias("p", "port")
-        .describe("p", "Port to listen on")
-    .default("r", config.defaultRoute)
-        .alias("r", "route")
-        .describe("r", "Route for the name generator")
-    .argv
-    ;
+  .default("c", config.defaultCount)
+    .alias("c", "count")
+    .describe("c", "Number of words / name")
+  .default("f", "words")
+    .alias("f", "file")
+    .describe("f", "Path to the wordlist file")
+  .default("n", config.defaultNum)
+    .alias("n", "numnames")
+    .describe("n", "Default number of names to generate")
+  .default("p", defaultPort)
+    .alias("p", "port")
+    .describe("p", "Port to listen on")
+  .default("r", config.defaultRoute)
+    .alias("r", "route")
+    .describe("r", "Route for the name generator")
+  .argv
+  ;
 
 if (argv.help) {
-    optimist.showHelp();
-    process.exit(code=0);
+  optimist.showHelp();
+  process.exit(code=0);
 }
 
 console.log("Default words / name:   \t" + argv.count);
@@ -50,21 +50,21 @@ app.listen(argv.port);
 
 // Routes
 app.get(argv.route, function(request, response) {
-    var num = parseInt(request["query"]["num"]) || argv.numnames;
-    var words = parseInt(request["query"]["words"]) || argv.count;
-    var bandNames = "";
+  var num = parseInt(request["query"]["num"]) || argv.numnames;
+  var words = parseInt(request["query"]["words"]) || argv.count;
+  var bandNames = "";
 
-    if (num * words > config.maxWords) {
-        response.send(403, "You requested " + num * words + " total words, maximum allowed is " + config.maxWords + ".");
+  if (num * words > config.maxWords) {
+    response.send(403, "You requested " + num * words + " total words, maximum allowed is " + config.maxWords + ".");
+  }
+
+  for (var i = 0; i < num; i++) {
+    var name = "";
+    for (var j = 0; j < words; j++) {
+      name += " " + wordList[Math.floor(Math.random() * wordListLength)];
     }
+    bandNames += name.trim() + "<br />";
+  }
 
-    for (var i = 0; i < num; i++) {
-        var name = "";
-        for (var j = 0; j < words; j++) {
-            name += " " + wordList[Math.floor(Math.random() * wordListLength)];
-        }
-        bandNames += name.trim() + "<br />";
-    }
-
-    response.send("<html><body>" + bandNames + "</body></html>");
+  response.send("<html><body>" + bandNames + "</body></html>");
 });
