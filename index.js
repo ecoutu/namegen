@@ -36,7 +36,7 @@ console.log("Using word file:        \t" + argv.file);
 console.log("Default number of names:\t" + argv.numnames);
 console.log("Using port:             \t" + argv.port);
 console.log("Using route:            \t" + argv.route);
-console.log("\n");
+console.log();
 
 // Load the wordlist
 var wordList = fs.readFileSync(argv.file).toString().split("\n");
