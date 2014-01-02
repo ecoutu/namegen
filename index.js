@@ -23,7 +23,7 @@ argv =  optimist.usage("Random name generator")
     .describe("p", "Port to listen on")
   .default("r", config.defaultRoute)
     .alias("r", "route")
-    .describe("r", "Route for the name generator")
+    .describe("r", "HTTP route for the name generator")
   .argv
   ;
 
