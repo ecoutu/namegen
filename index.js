@@ -31,13 +31,11 @@ if (argv.help) {
     process.exit(code=0);
 }
 
-if (process.env.ENV != "prod") {
-    console.log("Default words / name: " + argv.count);
-    console.log("Using word file: " + argv.file);
-    console.log("Default number of names: " + argv.numnames);
-    console.log("Using port: " + argv.port);
-    console.log("Using route: " + argv.route);
-}
+console.log("Default words / name: " + argv.count);
+console.log("Using word file: " + argv.file);
+console.log("Default number of names: " + argv.numnames);
+console.log("Using port: " + argv.port);
+console.log("Using route: " + argv.route);
 
 // Load the wordlist
 var wordList = fs.readFileSync(argv.file).toString().split("\n");
@@ -46,7 +44,6 @@ console.log("Read " + wordListLength + " words from file " + argv.file);
 
 // Setup and configure express
 var app = express();
-
 app.use(express.logger("dev"));
 app.listen(argv.port);
 
