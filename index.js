@@ -32,17 +32,16 @@ if (argv.help) {
   process.exit(code=0);
 }
 
-console.log("Default words / name:   \t" + argv.count);
-console.log("Using word file:        \t" + argv.file);
-console.log("Default number of names:\t" + argv.numnames);
-console.log("Using port:             \t" + argv.port);
-console.log("Using route:            \t" + argv.route);
-console.log();
+util.log("Default words / name:   \t" + argv.count);
+util.log("Using word file:        \t" + argv.file);
+util.log("Default number of names:\t" + argv.numnames);
+util.log("Using port:             \t" + argv.port);
+util.log("Using route:            \t" + argv.route);
 
 // Load the wordlist
 var wordList = fs.readFileSync(argv.file).toString().split("\n");
 var wordListLength = wordList.length;
-console.log(util.format("Read %d words from file %s.", wordListLength, argv.file));
+util.log(util.format("Read %d words from file %s.", wordListLength, argv.file));
 
 // Setup and configure express
 var app = express();
