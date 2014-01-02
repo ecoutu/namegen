@@ -23,9 +23,6 @@ var wordList = fs.readFileSync(argv.wordfile).toString().split("\n");
 var wordListLength = wordList.length;
 console.log("Read " + wordListLength + " words from file " + argv.wordfile);
 
-var defaultCount = parseInt(argv.count);
-var defaultNumNames = parseInt(argv.numnames);
-
 var app = express();
 
 console.log("Using port " + argv.port);
@@ -33,8 +30,8 @@ app.use(express.logger("dev"));
 app.listen(argv.port);
 
 app.get("/namegen", function(request, response) {
-    var num = parseInt(request["query"]["num"]) || defaultNumNames;
-    var words = parseInt(request["query"]["words"]) || defaultCount;
+    var num = parseInt(request["query"]["num"]) || argv.numnames;
+    var words = parseInt(request["query"]["words"]) || argv.count;
     var bandNames = "";
 
     if (num * words > config.maxWords) {
