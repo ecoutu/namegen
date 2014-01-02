@@ -1,16 +1,20 @@
-var _ = require("underscore");
-var express = require("express");
-var fs = require("fs");
+var _ = require("underscore")
+    , config = require('./config.json')[process.env.ENV]
+    , express = require("express")
+    , fs = require("fs")
+    ;
 
 var wordListPath = "words";
 var wordList = fs.readFileSync(wordListPath).toString().split("\n");
 var wordListLength = wordList.length;
 console.log("Read " + wordListLength + " words from file " + wordListPath);
 
+var port = process.env.PORT || config.port || 7677;
 var app = express();
 
+console.log("Using port " + port);
 app.use(express.logger("dev"));
-app.listen(8080);
+app.listen(port);
 
 app.get("/bandname", function(request, response) {
     var num = parseInt(request["query"]["num"]) || 1;
