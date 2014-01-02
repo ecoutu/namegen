@@ -21,11 +21,11 @@ This simple Express app selects a random series of words from a word list (about
 
 ## Example
 
-URL:
+#### URL:
 
     http://localhost:8080/namegen?num=10&words=2
 
-Results:
+#### Results:
 
     polishing trickery
     patine apartheid
