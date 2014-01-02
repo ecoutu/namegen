@@ -1,8 +1,9 @@
 {
-   "name": "BandName",
-   "description": "BandName Generator",
+   "name": "NameGen",
+   "description": "Name Generator",
    "version": "0.0.1",
    "dependencies": {
-      "express": "3.x"
+      "express": "3.x",
+      "underscore": "1.5.x"
    }
 }
