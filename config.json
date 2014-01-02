@@ -1,9 +1,13 @@
 {
   "dev": {
+    "defaultNum": 1,
+    "defaultCount": 2,
     "maxWords": 10000,
     "port": 8080
   },
   "prod": {
+    "defaultNum": 1,
+    "defaultCount": 2,
     "maxWords": 1000,
     "port": 80
   }
