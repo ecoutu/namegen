@@ -1,5 +1,5 @@
-var config = require("./config.json")[process.env.ENV]
-    , argv = require("optimist")
+var argv = require("optimist")
+    , config = require("./config.json")[process.env.ENV]
     , express = require("express")
     , fs = require("fs")
     ;
