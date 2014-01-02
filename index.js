@@ -35,7 +35,7 @@ app.get("/namegen", function(request, response) {
     var bandNames = "";
 
     if (num * words > config.maxWords) {
-        response.send(403, "You requested " + num * words + " words, maximum allowed is " + config.maxWords + ".");
+        response.send(403, "You requested " + num * words + " total words, maximum allowed is " + config.maxWords + ".");
     }
 
     for (var i = 0; i < num; i++) {
