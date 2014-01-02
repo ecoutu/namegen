@@ -2,6 +2,7 @@ var config = require("./config.json")[process.env.ENV]
   , express = require("express")
   , fs = require("fs")
   , optimist = require("optimist")
+  , util = require("util")
   ;
 
 var defaultPort = process.env.PORT || config.port || 7677;
@@ -41,7 +42,7 @@ console.log();
 // Load the wordlist
 var wordList = fs.readFileSync(argv.file).toString().split("\n");
 var wordListLength = wordList.length;
-console.log("Read " + wordListLength + " words from file " + argv.file);
+console.log(util.format("Read %d words from file %s.", wordListLength, argv.file));
 
 // Setup and configure express
 var app = express();
@@ -55,7 +56,7 @@ app.get(argv.route, function(request, response) {
   var bandNames = "";
 
   if (num * words > config.maxWords) {
-    response.send(403, "You requested " + num * words + " total words, maximum allowed is " + config.maxWords + ".");
+    response.send(403, util.format("You requested %d total words, maximum allowed is %d.", num * words, config.maxWords));
   }
 
   for (var i = 0; i < num; i++) {
