@@ -65,7 +65,5 @@ app.get(argv.route, function(request, response) {
         bandNames += name.trim() + "<br />";
     }
 
-    html = "<html><body>" + bandNames + "</body></html>"
-
-    response.send(html);
+    response.send("<html><body>" + bandNames + "</body></html>");
 });
