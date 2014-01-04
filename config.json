@@ -11,6 +11,6 @@
     "defaultNum": 1,
     "defaultRoute": "/namegen",
     "maxWords": 1000,
-    "port": 80
+    "port": 8080
   }
 }
