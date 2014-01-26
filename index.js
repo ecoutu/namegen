@@ -8,7 +8,7 @@ var config = require("./config.json")[process.env.ENV]
 var defaultPort = process.env.PORT || config.port || 7677;
 
 // Command line arguments
-argv =  optimist.usage("Random name generator")
+var argv =  optimist.usage("Random name generator")
   .default("c", config.defaultCount)
     .alias("c", "count")
     .describe("c", "Number of words / name")
@@ -24,12 +24,11 @@ argv =  optimist.usage("Random name generator")
   .default("r", config.defaultRoute)
     .alias("r", "route")
     .describe("r", "HTTP route for the name generator")
-  .argv
-  ;
+  .argv;
 
 if (argv.help) {
   optimist.showHelp();
-  process.exit(code=0);
+  process.exit(0);
 }
 
 util.log("Default words / name:   \t" + argv.count);
@@ -49,9 +48,9 @@ app.use(express.logger("dev"));
 app.listen(argv.port);
 
 // Routes
-app.get(argv.route, function(request, response) {
-  var num = parseInt(request["query"]["num"]) || argv.numnames;
-  var words = parseInt(request["query"]["words"]) || argv.count;
+app.get(argv.route, function (request, response) {
+  var num = parseInt(request.query.num, 10) || argv.numnames;
+  var words = parseInt(request.query.words, 10) || argv.count;
   var bandNames = "";
 
   if (num * words > config.maxWords) {
