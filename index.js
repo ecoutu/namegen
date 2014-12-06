@@ -55,6 +55,7 @@ app.get(argv.route, function (request, response) {
 
   if (num * words > config.maxWords) {
     response.send(403, util.format("You requested %d total words, maximum allowed is %d.", num * words, config.maxWords));
+    return;
   }
 
   for (var i = 0; i < num; i++) {
